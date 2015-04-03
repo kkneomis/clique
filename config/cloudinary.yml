@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: cliquefashion
+  api_key: '877985224931691'
+  api_secret: mhXXA7Y3Fu6b9NDXmrlwRdIR0oI
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: cliquefashion
+  api_key: '877985224931691'
+  api_secret: mhXXA7Y3Fu6b9NDXmrlwRdIR0oI
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: cliquefashion
+  api_key: '877985224931691'
+  api_secret: mhXXA7Y3Fu6b9NDXmrlwRdIR0oI
+  enhance_image_tag: true
+  static_image_support: false
