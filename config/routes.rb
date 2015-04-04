@@ -1,9 +1,26 @@
 Rails.application.routes.draw do
+  get 'admin/items'
+
+  get 'admin/members'
+
+  get 'items/members'
+
+  resources :items
+
   get 'users/show'
 
   devise_for :users
   
   resources :users
+  
+  resources :admins do
+    member do
+      put "invite", to: "admin#invite"
+      put "kick", to: "admin#kick"
+    end
+  end
+  
+  
   
   get 'pages/home'
 

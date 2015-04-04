@@ -1,2 +1,23 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+ <div class="row">
+  <div class="col-md-3">  
+      <h2><%= @user.name %></h2>
+      <%= image_tag @user.image.url(:thumbnail) %>
+    </div>
+
+    <div class="col-md-9">
+      <h4><%= @user.bio %></h4>
+   </div>
+ </div>
+   <hr>
+
+<div class="container">    
+  <div class="row">   
+   <% @items.each do |item| %>
+            <div class="col-md-3 column productbox">
+                <%= link_to  image_tag(item.image.url(:display), width: "250"), item%> 
+                <div class="producttitle"><%= link_to item.name, item%></div>
+                <div class="productprice"><div class="pricetext">$<%=  item.price%></div></div>
+            </div>
+      <% end %>
+    </div>
+ </div>
