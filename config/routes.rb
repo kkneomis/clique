@@ -11,8 +11,13 @@ Rails.application.routes.draw do
 
   devise_for :users
   
-  resources :users
-  
+  resources :users do
+    member do
+      put "join", to: "users#join"
+      put "kick", to: "users#kick"
+    end
+  end
+
   resources :admins do
     member do
       put "invite", to: "admin#invite"

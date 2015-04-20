@@ -13,6 +13,7 @@ class PagesController < ApplicationController
   
   def meet
     @users=User.all
+    #@users=User.where(member: true)
   end
   
   def join

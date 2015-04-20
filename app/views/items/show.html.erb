@@ -1,16 +1,55 @@
 
-<div class="col-md-6">
-  <%= image_tag @item.image.url(:display), width: 500 %>
-</div>
-<div class="col-md-6">
-  <h1><%=  @item.name.upcase %></h1>
-  <h3><%=  @item.description %></h3>
-  <h4> Sold by <%= link_to @item.user.name, @item.user %> </h4>
-  <% if  current_user== @item.user %>  
-    <%= link_to 'Edit', edit_item_path(@item) %> 
-  <% end %>
-  <%= link_to 'Back', @item.user %>
 
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <%= image_tag @item.image.url(:display), width: '100%', id: "image1"%>
+    </div>
+    <div class="col-md-6">
+      <h1><%=  @item.name.upcase %></h1>
+      <hr>
+      $<%=  @item.price %>
+      <hr>
+      <h3><%=  @item.description %></h3>
+      <h4> Sold by <%= link_to @item.user.name, @item.user %> </h4>
+      <% if  current_user== @item.user %>  
+        <%= link_to 'Edit', edit_item_path(@item) %> 
+      <% end %>
+      <%= link_to 'Back', @item.user %>
+
+    </div>
+  </div>
+</div>
   
+<br><br><br>
+<div class="container-fluid">
+    <div role="tabpanel">
+
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Description</a></li>
+        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Cliquer Profile</a></li>
+        <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Reviews</a></li>
+        
+      </ul>
+
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active container" id="home"><br><%=  @item.description %></div>
+        <div role="tabpanel" class="tab-pane container" id="profile"><br><h3><%= link_to @item.user.name, @item.user %></h3>
+        <%=  @item.user.bio %>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="messages">Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</div>
+        
+      </div>
+
+    </div>
 </div>
 
+<br><br><br><br><br><br>
+
+<script>
+		$(document).ready(function(){
+			$('#image1').zoom();
+    });
+</script>
