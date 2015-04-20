@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_filter :check_member, only: [:new, :create, :edit, :update, :destroy]
   before_filter :check_user, only: [:edit, :update, :destroy]
   
 
@@ -52,5 +53,10 @@ class ItemsController < ApplicationController
       if current_user != @item.user
         redirect_to root_url, alert: "Sorry, this Item belongs to someone else"\
         end
+    end
+    def check_member
+      if current_user.member != true
+        redirect_to pages_join_path, alert: "You must be a Clique Member to do this"\
+      end
     end
 end

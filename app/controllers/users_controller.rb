@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :join, :kick]
   before_filter :authenticate_user!, only: [:join, :kick]
-  before_filter :check_user, only: [:join, :kick]
+  before_filter :check_user, only: [:join, :kick, :manage]
   before_filter :check_member, only: [:show]
   
   def show
@@ -22,6 +22,7 @@ class UsersController < ApplicationController
     redirect_to @user
   end
 
+ 
   
 
    private
@@ -40,4 +41,5 @@ class UsersController < ApplicationController
         redirect_to root_url, alert: "This User is not a Clique Member"\
       end
     end
+  
 end

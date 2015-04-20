@@ -16,6 +16,8 @@
 	max-width: 1000px;
 	list-style: none;
 	text-align: center;
+  border-color:black;
+  border-width: 5px;
 }
 
 /* Common style */
@@ -981,12 +983,13 @@ figure.effect-sarah:hover p {
 /*---------------*/
 
 figure.effect-zoe figcaption {
+  
 	top: auto;
 	bottom: 0;
 	padding: 1em;
 	height: 3.75em;
-	background: #fff;
-	color: #3c4a50;
+	background: white;
+	color: black;
 	-webkit-transition: -webkit-transform 0.35s;
 	transition: transform 0.35s;
 	-webkit-transform: translate3d(0,100%,0);
@@ -995,24 +998,25 @@ figure.effect-zoe figcaption {
 
 figure.effect-zoe h2 {
 	float: left;
+  color:white;
 }
 
 figure.effect-zoe p.icon-links a {
 	float: right;
-	color: #3c4a50;
+	color: black;
 	font-size: 1.4em;
 }
 
 figure.effect-zoe:hover p.icon-links a:hover,
 figure.effect-zoe:hover p.icon-links a:focus {
-	color: #252d31;
+	color: black;
 }
 
 figure.effect-zoe p.description {
 	position: absolute;
 	bottom: 8em;
 	padding: 2em;
-	color: #fff;
+	color: white;
 	text-transform: none;
 	font-size: 90%;
 	opacity: 0;

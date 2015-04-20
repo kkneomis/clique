@@ -12,7 +12,9 @@
       <hr>
       <h3><%=  @item.description %></h3>
       <h4> Sold by <%= link_to @item.user.name, @item.user %> </h4>
+      <%= link_to 'checkout', @item.paypal_url(@item), class: "btn btn-primary" %> 
       <% if  current_user== @item.user %>  
+      
         <%= link_to 'Edit', edit_item_path(@item) %> 
       <% end %>
       <%= link_to 'Back', @item.user %>

@@ -1,7 +1,7 @@
 
 <div class="grid">
         <% @users.each do |user| %>
-          <a href="http://google.com">
+
               <figure class="effect-bubba">
                 
                 <%= link_to  image_tag(user.image.url(:wide)), user%> 
@@ -11,7 +11,7 @@
                 </figcaption>
                 		
               </figure>
-            </a>
+           
        <% end %>
 
 </div>
