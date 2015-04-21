@@ -27,6 +27,10 @@
     <%= f.label :category %><br>
     <%= f.select :category, ['Outerwear', 'Jackets', 'Dresses', 'Jumpsuits', 'Tops', 'Pants', 'Jeans', 'Skirts', 'T-Shirts', 'Sweatshirts', 'Shoes', 'Handbags', 'Accesories', 'Other' ] , :prompt => 'Select a category', class:"form-control", required: "true", class: "form-control"  %>
   </div>
+ <div class="field">
+   <%= f.label :gender %><br>
+   <%= f.select :genger, ['Male', 'Female'] , :prompt => 'Select a category', class:"form-control", required: "true", class: "form-control"  %>
+  </div>
   <div class="field">
     <%= f.label :price %><br>
     <%= f.text_field :price , class: "form-control", required:"true", placeholder:"$"%>
