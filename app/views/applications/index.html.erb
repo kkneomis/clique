@@ -1,6 +1,6 @@
 <h1>Listing applications</h1>
 
-<table>
+<table  class="table table-striped">
   <thead>
     <tr>
       <th>Name</th>
@@ -20,8 +20,6 @@
         <td><%= application.hometown %></td>
         <td><%= application.website %></td>
         <td><%= application.comment %></td>
-        <td><%= link_to 'Show', application %></td>
-        <td><%= link_to 'Edit', edit_application_path(application) %></td>
         <td><%= link_to 'Destroy', application, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
@@ -30,4 +28,3 @@
 
 <br>
 
-<%= link_to 'New Application', new_application_path %>
