@@ -4,7 +4,7 @@
 
               <figure class="effect-bubba">
                 
-                <%= link_to  image_tag(user.image.url(:wide)), user%> 
+                <%= link_to  image_tag(user.image.url(:wide), width: "100%"), user%> 
                 <figcaption>
                   <h2><span><%= user.name %> </span></h2>
                   <%= link_to "View this Store", user %>

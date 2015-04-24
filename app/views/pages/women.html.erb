@@ -1,0 +1,28 @@
+<h1 style="text-align:center">Items for Women</h1>
+ <div class="col-md-3">
+      <%= render 'side' %>
+    </div><!-----colmd3---->
+
+
+<div class="col-md-9">
+    <div class="grid">
+      <% @items.each do |item| %>
+            <div class="col-md-3">
+                  <figure class="effect-zoe">
+
+                   <%= link_to  image_tag(item.image.url(:display), width: "100%") %>
+                    <figcaption>
+                      <h2><%= link_to item.name, item%></h2>
+                      <p class="icon-links">
+                        <a href="#"><i class="fa fa-eye"></i></a>
+                      </p>
+                      <%= link_to "View this Store", item %>
+                    </figcaption>
+
+                  </figure>
+      </div>
+           <% end %>
+
+
+    </div>
+</div><!-----colmd9---->

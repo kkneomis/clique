@@ -47,7 +47,7 @@ class ItemsController < ApplicationController
     end
 
     def item_params
-      params.require(:item).permit(:name, :description, :image, :category, :user_id, :price)
+      params.require(:item).permit(:name, :description, :image, :category, :user_id, :price, :gender)
     end
     def check_user
       if current_user != @item.user
@@ -56,7 +56,7 @@ class ItemsController < ApplicationController
     end
     def check_member
       if current_user.member != true
-        redirect_to pages_join_path, alert: "You must be a Clique Member to do this"\
+        redirect_to new_application_path, alert: "You must be a Clique Member to do this"\
       end
     end
 end

@@ -1,0 +1,16 @@
+<h1>New order</h1>
+<div class="col-md-3">
+  
+  <%= image_tag(@item.image.url(:display), width: "100%") %>
+ </div>
+<div class="col-md-3">
+  <h3><b><%= @item.name.upcase %></b></h3>
+  <p><b>$<%= @item.price %></b></p>
+  <p><%= @item.description %></p>
+</div>
+
+  <div class="col-md-6">
+    <%= render 'form' %>
+
+    <%= link_to 'Back', item_orders_path %>
+</div>

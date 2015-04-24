@@ -1,6 +1,16 @@
 Rails.application.routes.draw do
-  resources :items
+  
+  
+  resources :applications
 
+  resources :comments
+  resources :orders
+  
+  resources :items do
+    resources :orders
+    resources :comments
+  end
+  
   get 'users/show'
 
   devise_for :users
@@ -14,7 +24,11 @@ Rails.application.routes.draw do
   end
 
   
-
+  get 'pages/men'
+  
+  get 'pages/women'
+  
+  get 'pages/lookbook'
   
   get 'pages/manage'
   

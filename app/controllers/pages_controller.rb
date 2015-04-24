@@ -16,6 +16,17 @@ class PagesController < ApplicationController
   def shop
   end
   
+  def men
+    @items= Item.where(:gender => "Male")
+  end
+  
+  def women
+    @items= Item.where(:gender => "Female")
+  end
+  
+  def lookbook
+  end
+  
   def meet
     #@users=User.all
     @users=User.where(member: true)

@@ -3,16 +3,17 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6">
-      <%= image_tag @item.image.url(:display), width: '100%', id: "image1"%>
+      <%= image_tag @item.image.url(:display), width: '100%', id: "zoom_01" %>
+
     </div>
     <div class="col-md-6">
       <h1><%=  @item.name.upcase %></h1>
       <hr>
-      $<%=  @item.price %>
+      <p><strong>Price: $<%=  @item.price %></strong></p> Sold by <%= link_to @item.user.name, @item.user %>
       <hr>
       <h3><%=  @item.description %></h3>
-      <h4> Sold by <%= link_to @item.user.name, @item.user %> </h4>
-      <%= link_to 'checkout', @item.paypal_url(@item), class: "btn btn-primary" %> 
+      <br><br>
+      <%= link_to 'Buy It Now', new_item_order_path(@item) , class: "btn btn-primary", target: '_blank' %> <br>
       <% if  current_user== @item.user %>  
       
         <%= link_to 'Edit', edit_item_path(@item) %> 
@@ -41,7 +42,34 @@
         <div role="tabpanel" class="tab-pane container" id="profile"><br><h3><%= link_to @item.user.name, @item.user %></h3>
         <%=  @item.user.bio %>
         </div>
-        <div role="tabpanel" class="tab-pane" id="messages"><br>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</div>
+        <div role="tabpanel" class="tab-pane" id="messages"><br>
+          <%= form_for Comment.new do |f|   %>
+                      <%= f.text_area  :content, class:"form-control", placeholder:"Enter your comment here!", required: true%>
+                      <% if user_signed_in? %>
+                            <%= f.hidden_field :user_id, value: current_user.id %>
+                      <%end %>
+                  <%= f.hidden_field :item_id, value: @item.id %>
+                    
+                      <%= f.submit "Submit this comment", class:"btn btn-primary" %>
+                     
+                    <% end %>
+              <br>
+          
+              <% @item.comments.order('created_at DESC').each do |com| %>
+                    <div class="panel panel-default">
+                    <div class="panel-body">
+                      <%= com.content  %>
+                    </div>
+                    <div class="panel-footer"><%= link_to com.user.name, com.user %> on  <%= com.created_at.strftime("%b/%d/%Y") %> at   <%=com.created_at.strftime("%I:%M%p") %></div>
+                  </div>
+       
+                    
+                  <% end %>
+        
+        
+        
+        
+        </div>
         
       </div>
 
@@ -51,7 +79,21 @@
 <br><br><br><br><br><br>
 
 <script>
-		$(document).ready(function(){
-			$('#image1').zoom();
-    });
+  
+  $('#zoom_01').elevateZoom({
+    zoomType: "inner",
+cursor: "crosshair",
+zoomWindowFadeIn: 500,
+zoomWindowFadeOut: 750
+   }); 
+  
+</script>
+
+
+
+<!-- JS to add -->
+<script type="text/javascript">
+  $(document).ready(function(){
+	$(".basic").jRating();
+  });
 </script>

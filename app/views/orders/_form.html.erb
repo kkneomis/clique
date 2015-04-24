@@ -1,0 +1,38 @@
+<%= form_for([@item, @order]) do |f| %>
+  <% if @order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+      <% @order.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :address %><br>
+    <%= f.text_area :address, class: "form-control", required:"true" %>
+  </div>
+  <div class="field">
+    <%= f.label :city %><br>
+    <%= f.text_field :city, class: "form-control", required:"true" %>
+  </div>
+  <div class="field">
+    <%= f.label :state %><br>
+    <%= f.text_field :state, class: "form-control", required:"true" %>
+  </div>
+  <div class="field">
+    <%= f.label :zip %><br>
+    <%= f.number_field :zip, class: "form-control", required:"true" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :quantity %><br>
+    <%= f.number_field :quantity, class: "form-control", required:"true" %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Process payment with paypal", class:"btn btn-primary" %>
+  </div>
+<% end %>
