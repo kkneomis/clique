@@ -1073,7 +1073,7 @@ html {
 }
 body {
   font-family: "Source Sans Pro", Calibri, Candara, Arial, sans-serif;
-  font-size: 15px;
+  font-size: 20px;
   line-height: 1.42857143;
   color: #333333;
   background-color: #ffffff;
@@ -3865,6 +3865,11 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   position: relative;
   display: block;
 }
+
+.collapse.in .spread > li {
+  width: 100%;
+}
+
 .spread > li {
   width: 20%;
 }
@@ -5627,6 +5632,8 @@ a.list-group-item-danger.active:focus {
 .panel-danger > .panel-footer + .panel-collapse > .panel-body {
   border-bottom-color: #f0005e;
 }
+
+
 .embed-responsive {
   position: relative;
   display: block;

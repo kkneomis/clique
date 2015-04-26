@@ -14,7 +14,7 @@ class Order < ActiveRecord::Base
         :business => seller.email,
             :cmd => '_cart',
       :upload => 1,
-      :return => return_url,
+      :return => "http://beefy-white-harbor-11-170758.use1.nitrousbox.com/",
       }	
       values.merge!({ 
        "amount_1" => price,
