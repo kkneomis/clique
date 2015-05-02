@@ -1,4 +1,4 @@
-source 'hhtps://code.stripe.com'
+#source 'hhtps://code.stripe.com'
 source 'https://rubygems.org'
 
 
@@ -25,7 +25,7 @@ gem 'acts_as_votable', '~> 0.10.0'
 gem 'bootstrap-sass', '~> 3.3.4'
 gem "acts_as_follower"
 gem 'stripe'
-gem "figaro"
+
 group :production do
 
 gem 'pg'
