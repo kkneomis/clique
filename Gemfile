@@ -1,4 +1,6 @@
+source 'hhtps://code.stripe.com'
 source 'https://rubygems.org'
+
 
 gem 'rails', '4.1.0'
 gem 'sass-rails', '~> 4.0.3'
@@ -22,7 +24,8 @@ gem 'cloudinary'
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'bootstrap-sass', '~> 3.3.4'
 gem "acts_as_follower"
-
+gem 'stripe'
+gem "figaro"
 group :production do
 
 gem 'pg'

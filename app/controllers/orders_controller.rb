@@ -31,13 +31,26 @@ class OrdersController < ApplicationController
     @order.item_id = @item.id
     @order.price = @item.price
     
-    @order.save
+    Stripe.api_key = ENV["STRIPE_API_KEY"]
+    token = params[:stripeToken]
+    
+    begin
+      charge = Stripe::Charge.create(
+        :amount => (@item.price * 100).floor,
+        :currency => "usd",
+        :card => token
+        )
+      flash[:notice] = "Thanks for ordering!"
+    rescue Stripe::CardError => e
+      flash[:danger] = e.message
+    end
+    
     respond_to do |format|
       if @order.save
-        format.html { redirect_to @order.paypal_url(@order) }
-        format.json { render :show, status: :created, location: @order }
+        format.html { redirect_to root_url, notice: 'Thank you for ordering.' }
+        format.json { render action: 'show', status: :created, location: @order }
       else
-        format.html { render :new }
+        format.html { render action: 'new' }
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end
     end
