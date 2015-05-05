@@ -24,7 +24,7 @@ gem 'cloudinary'
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'bootstrap-sass', '~> 3.3.4'
 gem "acts_as_follower"
-gem 'stripe'
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
 group :production do
 

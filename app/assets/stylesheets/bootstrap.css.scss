@@ -1073,7 +1073,7 @@ html {
 }
 body {
   font-family: "Source Sans Pro", Calibri, Candara, Arial, sans-serif;
-  font-size: 20px;
+  font-size: 15px;
   line-height: 1.42857143;
   color: #333333;
   background-color: #ffffff;
@@ -3451,7 +3451,8 @@ tbody.collapse.in {
 .dropdown-menu > li > a:focus {
   text-decoration: none;
   color: #ffffff;
-  background-color: #2780e3;
+  text-size: 12px;
+  background-color: black;
 }
 .dropdown-menu > .active > a,
 .dropdown-menu > .active > a:hover,

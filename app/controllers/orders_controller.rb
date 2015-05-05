@@ -31,30 +31,26 @@ class OrdersController < ApplicationController
     @order.item_id = @item.id
     @order.price = @item.price
     
-    Stripe.api_key = ENV["STRIPE_API_KEY"]
-    token = params[:stripeToken]
-    
-    begin
-      charge = Stripe::Charge.create(
-        :amount => (@item.price * 100).floor,
-        :currency => "usd",
-        :card => token
-        )
-      flash[:notice] = "Thanks for ordering!"
+     customer = Stripe::Customer.create(
+       :email => current_user.email,
+        :card  => params[:stripeToken]
+  )
+
+  charge = Stripe::Charge.create(
+    :customer    => customer.id,
+    :amount      => @order.price * 100,
+    :description => 'Rails Stripe customer',
+    :currency    => 'usd'
+  )
+
     rescue Stripe::CardError => e
-      flash[:danger] = e.message
-    end
-    
-    respond_to do |format|
-      if @order.save
-        format.html { redirect_to root_url, notice: 'Thank you for ordering.' }
-        format.json { render action: 'show', status: :created, location: @order }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
-      end
-    end
+      flash[:error] = e.message
+     redirect_to @order.item
+   
+  
   end
+
+
 
   def update
     @order.update(order_params)

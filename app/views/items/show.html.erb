@@ -16,7 +16,7 @@
       <%= link_to 'Buy It Now', new_item_order_path(@item) , class: "btn btn-primary", target: '_blank' %> <br>
       <% if  current_user== @item.user %>  
       
-        <%= link_to 'Edit', edit_item_path(@item) %> 
+        <%= link_to 'Edit', edit_item_path(@item) %> | 
       <% end %>
       <%= link_to 'Back', @item.user %>
 

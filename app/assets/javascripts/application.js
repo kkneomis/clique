@@ -16,4 +16,5 @@
 //= require jquery.zoom
 //= require jRating.jquery
 //= require jquery.elevatezoom
+//= require payments
 //= require_tree .
