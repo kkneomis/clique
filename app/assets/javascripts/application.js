@@ -17,4 +17,5 @@
 //= require jRating.jquery
 //= require jquery.elevatezoom
 //= require payments
+//= require slick
 //= require_tree .
