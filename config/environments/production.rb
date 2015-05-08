@@ -84,7 +84,7 @@ Rails.application.configure do
   
   
    #required for devise
-  config.action_mailer.default_url_options = { host: 'http://cliquefashion.herokuapp.com/' }
+  config.action_mailer.default_url_options = { host: 'beenclique.herokuapp.com' }
   
   
 end
