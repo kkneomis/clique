@@ -22,6 +22,9 @@ Rails.application.routes.draw do
     end
   end
 
+  post "/orders/:id" => "orders#show"
+  post "/hook" => "orders#hook"
+  
   
   get 'pages/men'
   

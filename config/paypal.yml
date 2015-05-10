@@ -9,9 +9,9 @@ test: &default
 
   # Credentials for Classic APIs
   app_id: APP-80W284485P519543T
-  username: jb-us-seller_api1.paypal.com
-  password: WX4WTU3S8MY44S7F
-  signature: AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy
+  username: skakpovi-facilitator_api1.gmail.com
+  password: M9A7D4ANEK8MVVRE
+  signature: A8QLgfW-DLE4p1JJ5a.ibVVd1RtAAUBQSKIp9Wb0EmGMQLpdD8XP0TGV
   # # With Certificate
   # cert_path: "config/cert_key.pem"
   sandbox_email_address: Platform.sdk.seller@gmail.com

@@ -4,6 +4,18 @@ class OrdersController < ApplicationController
 
   respond_to :html
 
+  protect_from_forgery except: [:hook]
+  def hook
+    params.permit! # Permit all Paypal input params
+    status = params[:payment_status]
+    if status == "Completed"
+      @order = Order.find params[:invoice]
+      @order.update_attributes(notification_params: params, status: status, transaction_id: params[:txn_id], purchased_at: Time.now)
+    end
+    render nothing: true
+  end
+  
+  
   def index
     @orders = Order.all
 
@@ -55,6 +67,6 @@ class OrdersController < ApplicationController
     end
 
     def order_params
-      params.require(:order).permit(:address, :city, :state, :zip, :user_id, :item_id, :quantity)
+      params.require(:order).permit(:address, :city, :state, :zip, :user_id, :item_id, :quantity, :notification_params,  :status,:transaction_id, :purchased_at )
     end
 end
