@@ -47,7 +47,7 @@ class ItemsController < ApplicationController
     end
 
     def item_params
-      params.require(:item).permit(:name, :description, :image, :category, :user_id, :price, :gender)
+      params.require(:item).permit(:name, :description, :image, :category, :user_id, :price, :gender, :permalink)
     end
     def check_user
       if current_user != @item.user

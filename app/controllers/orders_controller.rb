@@ -31,22 +31,9 @@ class OrdersController < ApplicationController
     @order.item_id = @item.id
     @order.price = @item.price
     
-     customer = Stripe::Customer.create(
-       :email => current_user.email,
-        :card  => params[:stripeToken]
-  )
-
-  charge = Stripe::Charge.create(
-    :customer    => customer.id,
-    :amount      => @order.price * 100,
-    :description => 'Rails Stripe customer',
-    :currency    => 'usd'
-  )
-
-    rescue Stripe::CardError => e
-      flash[:error] = e.message
-     redirect_to @order.item
-   
+    if @order.save
+      redirect_to @order.paypal_url(root_url)
+    end
   
   end
 

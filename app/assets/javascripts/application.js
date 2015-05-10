@@ -11,11 +11,11 @@
 // about supported directives.
 //
 //= require jquery
+//= require payola
 //= require jquery_ujs
 //= require turbolinks
 //= require jquery.zoom
 //= require jRating.jquery
 //= require jquery.elevatezoom
 //= require payments
-//= require slick
 //= require_tree .

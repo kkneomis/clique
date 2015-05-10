@@ -7,14 +7,13 @@ class Order < ActiveRecord::Base
   belongs_to :buyer, class_name: "User"
   belongs_to :seller, class_name: "User"
   
-  return_url = "http://beefy-white-harbor-11-170758.use1.nitrousbox.com/"
   
    def paypal_url(return_url) 
       values = { 
-        :business => seller.email,
+        :business => 'skakpovi-facilitator@gmail.com',
             :cmd => '_cart',
       :upload => 1,
-      :return => "http://beefy-white-harbor-11-170758.use1.nitrousbox.com/",
+        :return => return_url,
       }	
       values.merge!({ 
        "amount_1" => price,

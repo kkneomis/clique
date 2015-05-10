@@ -23,6 +23,7 @@
     <%= f.label :image %><br>
     <%= f.file_field :image , class: "form-control"%>
   </div>
+
   <div class="field">
     <%= f.label :category %><br>
     <%= f.select :category, ['Outerwear', 'Jackets', 'Dresses', 'Jumpsuits', 'Tops', 'Pants', 'Jeans', 'Skirts', 'T-Shirts', 'Sweatshirts', 'Shoes', 'Handbags', 'Accesories', 'Other' ] , :prompt => 'Select a category', class:"form-control", required: "true", class: "form-control"  %>
