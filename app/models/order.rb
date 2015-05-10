@@ -15,7 +15,7 @@ class Order < ActiveRecord::Base
         :upload => 1,
         :invoice => id,
         :return => "#{Rails.application.secrets.app_host}#{return_url}",
-        :notify_url => "http://beencliqued.herokuapp.com/hook"
+        :notify_url => "#{Rails.application.secrets.app_host}/hook"
       }	
       values.merge!({ 
        "amount_1" => price,
