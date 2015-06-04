@@ -13,7 +13,7 @@
       <hr>
       <h3><%=  @item.description %></h3>
       <br><br>
-      <%= link_to 'Buy It Now', new_item_order_path(@item) , class: "btn btn-primary", target: '_blank' %> <br>
+      <%= link_to 'Buy It Now', new_item_order_path(@item) , class: "btn btn-primary", data: {no_turbolink: true} %> <br>
 
       <% if  current_user== @item.user %>  
       

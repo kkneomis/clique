@@ -36,7 +36,12 @@
   color:white;
 }
 
-#cycler img {width:"100%"}
-#cycler{position:relative;}
-#cycler img{position:absolute;z-index:1}
-#cycler img.active{z-index:3}
+.carousel-caption a{
+  color: white !important;
+  text-decoration:none;
+}
+
+.carousel-caption{
+
+  position:absolute; top:50%; height:10em; margin-top:-5em
+}
