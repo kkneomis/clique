@@ -10,6 +10,13 @@ Rails.application.routes.draw do
     resources :comments
   end
   
+  resources :orders do
+    member do
+      put "ship", to: "orders#ship"
+    end
+  end
+  
+  
   get 'users/show'
 
   devise_for :users
@@ -47,6 +54,10 @@ Rails.application.routes.draw do
   get 'pages/meet'
   
   root 'pages#home'
+  
+   get 'sales' => 'orders#sales'
+  
+  get 'purchases' => 'orders#purchases'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

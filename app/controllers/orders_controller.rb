@@ -1,16 +1,17 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :set_order, only: [:show, :edit, :update, :destroy, :ship]
+  before_filter :authenticate_user!, only: [:new, :create, :edit, :update, :destroy, :sales, :purchases]
 
   respond_to :html
 
   protect_from_forgery except: [:hook]
   def hook
     params.permit! # Permit all Paypal input params
+    logger.info(params.to_s)
     status = params[:payment_status]
     if status == "Completed"
       @order = Order.find params[:invoice]
-      @order.update_attributes(notification_params: params, status: status, transaction_id: params[:txn_id], purchased_at: Time.now)
+      @order.update_attributes(notification_params: params.to_s, status: status, transaction_id: params[:txn_id], purchased_at: Time.now)
     end
     render nothing: true
   end
@@ -22,9 +23,17 @@ class OrdersController < ApplicationController
   end
 
   def show
-
   end
 
+  def sales
+    @orders= Order.all.where(status: "Completed").where(seller: current_user).order("created_at DESC")
+    
+  end
+  
+  def purchases
+    @orders= Order.all.where(buyer: current_user).order("created_at DESC")
+  end
+  
   def new
     @order = Order.new
     @item = Item.find(params[:item_id])
@@ -38,41 +47,23 @@ class OrdersController < ApplicationController
     @item = Item.find(params[:item_id])
     @seller= @item.user
     
+    @order.shipped = false
     @order.buyer_id = current_user.id
     @order.seller_id =@seller.id
     @order.item_id = @item.id
     @order.price = @item.price
     
-    Stripe.api_key = ENV["STRIPE_API_KEY"]
-    token = params[:stripeToken]
-    
-    begin
-      charge = Stripe::Charge.create(
-        :amount => (@listing.price * 100).floor,
-        :currency => "usd",
-        :card => token
-        )
-      flash[:notice] = "Thanks for ordering!"
-    rescue Stripe::CardError => e
-      flash[:danger] = e.message
+
+    if @order.save
+      redirect_to @order.paypal_url(root_url)
     end
-    
-    respond_to do |format|
-      if @order.save
-        format.html { redirect_to root_url, notice: 'Thank you for ordering.' }
-        format.json { render action: 'show', status: :created, location: @order }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
-      end
-    end
-    #if @order.save
-     # redirect_to @order.paypal_url(root_url)
-    #end
   
   end
 
-
+  def ship
+    @order.update_attributes(:shipped => true)
+    redirect_to(sales_path)
+  end
 
   def update
     @order.update(order_params)
@@ -90,6 +81,6 @@ class OrdersController < ApplicationController
     end
 
     def order_params
-      params.require(:order).permit(:address, :city, :state, :zip, :user_id, :item_id, :quantity, :notification_params,  :status,:transaction_id, :purchased_at )
+      params.require(:order).permit(:address, :city, :state, :zip, :user_id, :item_id, :quantity, :notification_params,  :status,:transaction_id, :purchased_at, :shipped )
     end
 end
