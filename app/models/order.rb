@@ -47,7 +47,7 @@ end
       "quantity_1" => quantity
       });
              # For test transactions use this URL
-       "https://www.paypal.com/cgi-bin/webscr?"; + values.to_query
+       "https://www.paypal.com/cgi-bin/webscr?" + values.to_query
    end 
 end  
   
