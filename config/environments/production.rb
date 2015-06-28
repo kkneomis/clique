@@ -65,7 +65,6 @@ Rails.application.configure do
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
 
-  
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
   config.i18n.fallbacks = true
@@ -82,18 +81,20 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
   
-  
-   #required for devise
+  #required for devise
   config.action_mailer.default_url_options = { host: 'www.meccashare.com' }
   
-    config.action_mailer.delivery_method = :smtp
+  config.action_mailer.delivery_method = :smtp
 config.action_mailer.smtp_settings = {
   :authentication => :plain,
   :address => "smtp.mailgun.org",
   :port => 587,
-  :domain => "http://beencliqued.herokuapp.com/",
-  :user_name => "postmaster@mg.beencliqued.herokuapp.com",
-  :password => "5d03dd7ec05095bb0071742b9ff54a43"
-}
+  :domain => "meccashare.herokuapp.com",
+  :user_name => "postmaster@meccashare.herokuapp.com",
+  :password => "e62ce6f1a0db56b9f0d9bbf2f29074eb"
+  }
+  
+ #Elasticsearch::Model.client = Elasticsearch::Client.new host: 'http://paas:9ee5ce73cb3f846cba4b1d8f7d2fabeb@bofur-us-east-1.searchly.com'
+
   
 end
