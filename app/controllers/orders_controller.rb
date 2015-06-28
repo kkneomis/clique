@@ -55,7 +55,9 @@ class OrdersController < ApplicationController
     
 
     if @order.save
+      CliqueMailer.membership_notification.deliver
       redirect_to @order.paypal_url(root_url)
+      
     end
   
   end

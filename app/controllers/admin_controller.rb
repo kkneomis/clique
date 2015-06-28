@@ -15,8 +15,8 @@ class AdminController < ApplicationController
   
   def invite
     @user.member = true
-    @record="Welcome to Clique"
-    ModelMailer.membership_notification(@record).deliver
+    
+    
   end
   
   def kick
