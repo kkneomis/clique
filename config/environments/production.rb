@@ -84,7 +84,7 @@ Rails.application.configure do
   
   
    #required for devise
-  config.action_mailer.default_url_options = { host: 'http://beencliqued.herokuapp.com/' }
+  config.action_mailer.default_url_options = { host: 'www.meccashare.com/' }
   
     config.action_mailer.delivery_method = :smtp
 config.action_mailer.smtp_settings = {
