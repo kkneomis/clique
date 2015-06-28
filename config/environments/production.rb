@@ -84,15 +84,16 @@ Rails.application.configure do
   
   
    #required for devise
-  config.action_mailer.default_url_options = { host: 'beenclique.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: 'beencliqued.herokuapp.com' }
   
-   config.action_mailer.delivery_method = :smtp
+    config.action_mailer.delivery_method = :smtp
 config.action_mailer.smtp_settings = {
   :authentication => :plain,
   :address => "smtp.mailgun.org",
   :port => 587,
-  :domain => "beenclique.herokuapp.com",
-  :user_name => "postmaster@mg.cliquefashion.herokuapp.com",
-  :password => "b9003f89ba8bb448355b0c0c5e4ede78 "
+  :domain => "beencliqued.herokuapp.com",
+  :user_name => "postmaster@mg.beencliqued.herokuapp.com",
+  :password => "5d03dd7ec05095bb0071742b9ff54a43"
 }
+  
 end

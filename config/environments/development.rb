@@ -31,7 +31,17 @@ Rails.application.configure do
   # Checks for improperly declared sprockets dependencies.
   # Raises helpful error messages.
   config.assets.raise_runtime_errors = true
-config.action_mailer.default_url_options = { host: 'http://beefy-white-harbor-11-170758.use1.nitrousbox.com/', port: 3000 }                                                                                        
+config.action_mailer.default_url_options = { host: 'http://beefy-white-harbor-11-170758.use1.nitrousbox.com/', port: 3000 }                                                  
+  
+    config.action_mailer.delivery_method = :smtp
+config.action_mailer.smtp_settings = {
+  :authentication => :plain,
+  :address => "smtp.mailgun.org",
+  :port => 587,
+  :domain => "beencliqued.herokuapp.com",
+  :user_name => "postmaster@mg.beencliqued.herokuapp.com",
+  :password => "5d03dd7ec05095bb0071742b9ff54a43"
+}
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 end
