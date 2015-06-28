@@ -12,6 +12,8 @@ class OrdersController < ApplicationController
     if status == "Completed"
       @order = Order.find params[:invoice]
       @order.update_attributes(notification_params: params.to_s, status: status, transaction_id: params[:txn_id], purchased_at: Time.now)
+      CliqueMailer.sale(@order.seller).deliver
+      CliqueMailer.purchase(@order.buyer).deliver
     end
     render nothing: true
   end
@@ -55,9 +57,7 @@ class OrdersController < ApplicationController
     
 
     if @order.save
-      CliqueMailer.membership_notification.deliver
       redirect_to @order.paypal_url(root_url)
-      
     end
   
   end
